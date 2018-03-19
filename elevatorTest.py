@@ -28,10 +28,12 @@ def  find_resistance_1(nb_elevator,nb_story):
             return i - 1, i - 1
 
 def find_resistance_2(nb_elevator, nb_story):
-    
-
-
-
+    # Using dichotomy
+    elevators = []
+    for i in range(1, nb_elevator):
+        elevators.append(Elevator(i))
+    for elevator in elevators:
+        elevator.crash_test(nb_story)
 
     # elevators = []
     # for i in range(0, nb_elevator):
@@ -53,6 +55,8 @@ class MyApp(object):
         result.update({'nbElevator' : nb_elevator})
         return json.dumps(result)
 if __name__ == "__main__":
+    #TODO need to add a counter to record our trials
+    #TODO need to implement the dichotomy (bissection) algorithm to optimize number of trials
     # cherrypy.quickstart(MyApp ())
     assert  not Elevator(12).crash_test(6)
     assert  Elevator(12).crash_test(13)
